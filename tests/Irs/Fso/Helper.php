@@ -31,8 +31,14 @@ abstract class Helper extends \PHPUnit_Framework_Assert
                     self::delete($path . DIRECTORY_SEPARATOR . $readdirectory);
                 }
                 $directory->close();
+                rmdir($path);
+            } else {
+                if (php_uname('s') == 'Windows NT') {
+                    unlink($filename);
+                } else {
+                    rmdir($filename);
+                }
             }
-            rmdir($path);
         } else if (is_file($path)) {
             unlink($path);
         } else {
