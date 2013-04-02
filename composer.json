@@ -1,0 +1,22 @@
+{
+    "name":         "irs/fso",
+    "description":  "Tiny file system operation abstraction layer.",
+    "keywords":     ["fso", "files"],
+    "type":         "library",
+    "license":      "MIT",
+
+    "authors": [
+        {
+            "name":   "Vadim Kusakin",
+            "email":  "vadim.irbis@gmail.com"
+        }
+    ],
+        
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    
+    "autoload": {
+        "psr-0": {"Irs\\Fso": "src/"}
+    }
+}
