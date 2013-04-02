@@ -9,11 +9,11 @@
  */
 -->
 <phpunit colors="true"
-    bootstrap="../vendor/autoload.php">
+    bootstrap="vendor/autoload.php">
     
     <testsuites>
         <testsuite name="Test suite">
-            <directory>Irs</directory>
+            <directory>tests/Irs</directory>
         </testsuite>
     </testsuites>
 </phpunit>
