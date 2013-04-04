@@ -48,8 +48,12 @@ abstract class Fso
             throw new \InvalidArgumentException("File '$filename' does not exist.");
         }
 
-        if (is_file($filename)) {
-            return unlink($filename);
+        if (is_file($filename) || is_link($filename)) {
+            if (is_dir($filename) && self::isOsWindowsNt()) {
+                return rmdir($filename);
+            } else {
+                return unlink($filename);
+            }
         }
 
         $iterator = new \RecursiveIteratorIterator(
@@ -73,11 +77,7 @@ abstract class Fso
         }
 
         unset($iterator);
-        if (is_link($filename) && !self::isOsWindowsNt()) {
-            unlink($filename);
-        } else {
-            rmdir($filename);
-    	}
+        rmdir($filename);
     }
 
     protected static function isOsSupportsLinks()
