@@ -34,9 +34,9 @@ abstract class Helper extends \PHPUnit_Framework_Assert
                 rmdir($path);
             } else {
                 if (php_uname('s') == 'Windows NT') {
-                    unlink($filename);
+                    unlink($path);
                 } else {
-                    rmdir($filename);
+                    rmdir($path);
                 }
             }
         } else if (is_file($path)) {
